@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+var bodyParser = require("body-parser"); 
 const enableHotReload = require("./hot-reload");
 
 const app = express();
@@ -16,7 +17,7 @@ console.log("Views path set to:", path.join(__dirname, "views"));
 
 // Configuração de pasta pública
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use(bodyParser.urlencoded({extended: false}));
 // Habilitar hot-reload
 enableHotReload(app);
 
